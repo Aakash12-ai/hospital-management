@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Management (Static HTML)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <header>
+    <h1>Hospital Management</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="kpi-title">
+      <h2 id="kpi-title">Dashboard summary</h2>
+      <ul>
+        <li>Total patients: —</li>
+        <li>Total doctors: —</li>
+        <li>Upcoming appointments: —</li>
+        <li>Unpaid bills: —</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section aria-labelledby="patient-form-title">
+      <h2 id="patient-form-title">Register patient</h2>
+      <form action="/patients" method="post">
+        <div>
+          <label for="patient_name">Full name</label>
+          <input id="patient_name" name="name" required>
+        </div>
+        <div>
+          <label for="patient_age">Age</label>
+          <input id="patient_age" name="age" type="number" min="0" required>
+        </div>
+        <div>
+          <label for="patient_gender">Gender</label>
+          <select id="patient_gender" name="gender" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="patient_phone">Phone</label>
+          <input id="patient_phone" name="phone" required>
+        </div>
+        <div>
+          <label for="patient_address">Address</label>
+          <input id="patient_address" name="address">
+        </div>
+        <div>
+          <button type="submit">Add patient</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+
+      <h3>Patients</h3>
+      <table>
+        <caption>Patient list</caption>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <section aria-labelledby="doctor-form-title">
+      <h2 id="doctor-form-title">Add doctor</h2>
+      <form action="/doctors" method="post">
+        <div>
+          <label for="doctor_name">Full name</label>
+          <input id="doctor_name" name="name" required>
+        </div>
+        <div>
+          <label for="doctor_dept">Department</label>
+          <input id="doctor_dept" name="department" required>
+        </div>
+        <div>
+          <label for="doctor_phone">Phone</label>
+          <input id="doctor_phone" name="phone">
+        </div>
+        <div>
+          <label for="doctor_email">Email</label>
+          <input id="doctor_email" name="email" type="email">
+        </div>
+        <div>
+          <button type="submit">Add doctor</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+
+      <h3>Doctors</h3>
+      <table>
+        <caption>Doctor list</caption>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th><th>Department</th><th>Phone</th><th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <section aria-labelledby="appointment-form-title">
+      <h2 id="appointment-form-title">Schedule appointment</h2>
+      <form action="/appointments" method="post">
+        <div>
+          <label for="appointment_patient">Patient ID</label>
+          <input id="appointment_patient" name="patient_id" required>
+        </div>
+        <div>
+          <label for="appointment_doctor">Doctor ID</label>
+          <input id="appointment_doctor" name="doctor_id" required>
+        </div>
+        <div>
+          <label for="appointment_date">Date</label>
+          <input id="appointment_date" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="appointment_time">Time</label>
+          <input id="appointment_time" name="time" placeholder="HH:MM">
+        </div>
+        <div>
+          <label for="appointment_status">Status</label>
+          <select id="appointment_status" name="status" required>
+            <option value="">Select</option>
+            <option>Scheduled</option>
+            <option>Completed</option>
+            <option>Cancelled</option>
+          </select>
+        </div>
+        <div>
+          <label for="appointment_notes">Notes</label>
+          <textarea id="appointment_notes" name="notes"></textarea>
+        </div>
+        <div>
+          <button type="submit">Add appointment</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+
+      <h3>Appointments</h3>
+      <table>
+        <caption>Appointment list</caption>
+        <thead>
+          <tr>
+            <th>ID</th><th>Date</th><th>Time</th><th>Patient</th><th>Doctor</th><th>Department</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <section aria-labelledby="billing-form-title">
+      <h2 id="billing-form-title">Create bill</h2>
+      <form action="/bills" method="post">
+        <div>
+          <label for="bill_appointment">Appointment ID</label>
+          <input id="bill_appointment" name="appointment_id" required>
+        </div>
+        <div>
+          <label for="bill_amount">Amount</label>
+          <input id="bill_amount" name="amount" type="number" min="0" step="0.01" required>
+        </div>
+        <div>
+          <label for="bill_status">Status</label>
+          <select id="bill_status" name="status" required>
+            <option value="">Select</option>
+            <option>Unpaid</option>
+            <option>Paid</option>
+          </select>
+        </div>
+        <div>
+          <label for="bill_notes">Notes</label>
+          <textarea id="bill_notes" name="notes"></textarea>
+        </div>
+        <div>
+          <button type="submit">Add bill</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+
+      <h3>Bills</h3>
+      <table>
+        <caption>Billing list</caption>
+        <thead>
+          <tr>
+            <th>ID</th><th>Patient</th><th>Doctor</th><th>Amount</th><th>Status</th><th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <section aria-labelledby="reports-title">
+      <h2 id="reports-title">Reports</h2>
+      <form action="/reports" method="get">
+        <div>
+          <label for="report_from">Date from</label>
+          <input id="report_from" name="from" type="date">
+        </div>
+        <div>
+          <label for="report_to">Date to</label>
+          <input id="report_to" name="to" type="date">
+        </div>
+        <div>
+          <button type="submit">Run report</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+
+      <h3>Summary</h3>
+      <p>Appointments: — | Scheduled: — | Completed: — | Cancelled: — | Revenue: —</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Hospital Management Template</p>
+  </footer>
+
+</body>
+</html>
